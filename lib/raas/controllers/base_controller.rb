@@ -46,6 +46,8 @@ module Raas
     end
 
     def validate_response(context)
+      @logger.error("Raising error due to invalid response:\n#{context.response.inspect}") unless (200...208).include? context.response.status_code
+
       if context.response.status_code == 400
         raise RaasClientException.new 'Bad Request', context
       elsif context.response.status_code == 401
