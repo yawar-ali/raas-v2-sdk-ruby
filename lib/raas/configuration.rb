@@ -51,7 +51,7 @@ module Raas
       Environment::LOCAL => {
         Server::DEFAULT => 'http://raastango.cc:8080/v2',
       },
-    }
+    }.freeze
 
     # Generates the appropriate base URI for the environment and the server.
     # @param [Configuration::Server] The server enum for which the base URI is required.
