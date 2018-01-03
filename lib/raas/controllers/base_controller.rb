@@ -46,7 +46,20 @@ module Raas
     end
 
     def validate_response(context)
-      @logger.error("Raising error due to invalid response:\n#{context.response.inspect}") unless (200...208).include? context.response.status_code
+      unless (200...208).include? context.response.status_code
+        @logger.error(
+          "Raising error due to invalid response:\n" +
+          "  #{JSON.parse(context.response.raw_body)}"
+        )
+
+        @logger.error(
+          "Original request:\n" +
+          "  URL: #{context.request.query_url}\n" +
+          "  HTTP Method: #{context.request.http_method}\n" +
+          "  Headers: #{context.request.headers}\n" +
+          "  Parameters: #{context.request.parameters}"
+        )
+      end
 
       if context.response.status_code == 400
         raise RaasClientException.new 'Bad Request', context
