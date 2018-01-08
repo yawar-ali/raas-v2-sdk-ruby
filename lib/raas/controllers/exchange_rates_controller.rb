@@ -27,6 +27,12 @@ module Raas
         _context = execute_request(_request, name: 'get_exchange_rates')
         validate_response(_context)
 
+        # return appropriate response type
+        @logger.info("Returning response for get_catalog.")
+        decoded = APIHelper.json_deserialize(_context.response.raw_body)
+        return decoded['exchangeRates'].map do |rate|
+          ExchangeRateModel.from_hash(rate)
+        end
       rescue Exception => e
         @logger.error(e)
         raise e
