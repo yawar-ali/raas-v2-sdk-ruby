@@ -46,7 +46,7 @@ module Raas
       return nil unless hash
 
       # Extract variables from the hash
-      last_modified_date = DateTime.rfc3339(hash['lastModifiedDate']) if hash['lastModifiedDate']
+      last_modified_date = DateTime.parse(hash['lastModifiedDate']) if hash['lastModifiedDate']
       reward_currency = hash['rewardCurrency']
       base_currency = hash['baseCurrency']
       base_fx = hash['baseFx']
