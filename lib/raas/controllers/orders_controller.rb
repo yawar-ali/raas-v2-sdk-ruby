@@ -67,7 +67,7 @@ module Raas
 
         # prepare query url
         @logger.info("Preparing query URL for get_order.")
-        _query_builder = Configuration.get_base_uri()
+        _query_builder = Configuration.get_base_uri().clone
         _query_builder << '/orders/{referenceOrderID}'
         _query_builder = APIHelper.append_url_with_template_parameters _query_builder, {
           'referenceOrderID' => reference_order_id
@@ -113,7 +113,7 @@ module Raas
 
         # prepare query url
         @logger.info("Preparing query URL for create_resend_order.")
-        _query_builder = Configuration.get_base_uri()
+        _query_builder = Configuration.get_base_uri().clone
         _query_builder << '/orders/{referenceOrderID}/resends'
         _query_builder = APIHelper.append_url_with_template_parameters _query_builder, {
           'referenceOrderID' => reference_order_id
@@ -159,7 +159,7 @@ module Raas
 
         # prepare query url
         @logger.info("Preparing query URL for get_orders.")
-        _query_builder = Configuration.get_base_uri()
+        _query_builder = Configuration.get_base_uri().clone
         _query_builder << '/orders'
         _query_builder = APIHelper.append_url_with_query_parameters _query_builder, {
           'accountIdentifier' => options['account_identifier'],
