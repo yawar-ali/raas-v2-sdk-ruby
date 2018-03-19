@@ -26,7 +26,7 @@ module Raas
     end
 
     # The environment in which the SDK is running
-    @environment = Environment::SANDBOX
+    @environment = Environment::PRODUCTION
 
     # RaaS v2 API Platform Name
     @platform_name = 'QAPlatform2'
