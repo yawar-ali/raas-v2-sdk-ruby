@@ -45,10 +45,10 @@ module Raas
     end
 
     # Initializer with authentication and configuration parameters
-    def initialize(platform_name: 'QAPlatform2', platform_key: 'apYPfT6HNONpDRUj3CLGWYt7gvIHONpDRUYPfT6Hj')
+    def initialize(platform_name: 'QAPlatform2', platform_key: 'apYPfT6HNONpDRUj3CLGWYt7gvIHONpDRUYPfT6Hj', env: 0)
       Configuration.platform_name = platform_name if platform_name
       Configuration.platform_key = platform_key if platform_key
-      Configuration.environment = 1 if platform_name == 'GreenBoxPOS'
+      Configuration.environment = env if env
     end
   end
 end
