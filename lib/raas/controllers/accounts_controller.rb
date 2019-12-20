@@ -69,7 +69,7 @@ module Raas
 
         # prepare query url
         @logger.info("Preparing query URL for get_account.")
-        _query_builder = Configuration.get_base_uri()
+        _query_builder = Configuration.get_base_uri().clone
         _query_builder << '/accounts/{accountIdentifier}'
         _query_builder = APIHelper.append_url_with_template_parameters _query_builder, {
           'accountIdentifier' => account_identifier
@@ -118,7 +118,7 @@ module Raas
 
         # prepare query url
         @logger.info("Preparing query URL for create_account.")
-        _query_builder = Configuration.get_base_uri()
+        _query_builder = Configuration.get_base_uri().clone
         _query_builder << '/customers/{customerIdentifier}/accounts'
         _query_builder = APIHelper.append_url_with_template_parameters _query_builder, {
           'customerIdentifier' => customer_identifier
@@ -158,7 +158,7 @@ module Raas
 
         # prepare query url
         @logger.info("Preparing query URL for get_all_accounts.")
-        _query_builder = Configuration.get_base_uri()
+        _query_builder = Configuration.get_base_uri().clone
         _query_builder << '/accounts'
         _query_url = APIHelper.clean_url _query_builder
 

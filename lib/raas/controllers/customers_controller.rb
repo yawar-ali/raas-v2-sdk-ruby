@@ -69,7 +69,7 @@ module Raas
 
         # prepare query url
         @logger.info("Preparing query URL for create_customer.")
-        _query_builder = Configuration.get_base_uri()
+        _query_builder = Configuration.get_base_uri().clone
         _query_builder << '/customers'
         _query_url = APIHelper.clean_url _query_builder
 
@@ -106,7 +106,7 @@ module Raas
 
         # prepare query url
         @logger.info("Preparing query URL for get_all_customers.")
-        _query_builder = Configuration.get_base_uri()
+        _query_builder = Configuration.get_base_uri().clone
         _query_builder << '/customers'
         _query_url = APIHelper.clean_url _query_builder
 
